@@ -1,10 +1,6 @@
 from Products.CMFCore.utils import getToolByName
 
 def setupAttachments(context):
-    
-    # XXX: Since this is run an as extension profile, this shouldn't be 
-    # needed IMHO, but GS will run this step again if SA has been inspected
-    # for an import_steps.xml again.
     if context.readDataFile('simpleattachment_various.txt') is None:
         return
     
