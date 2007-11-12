@@ -5,8 +5,7 @@ version = '3.1'
 setup(name='Products.SimpleAttachment',
       version=version,
       description="Simple Attachments for Plone",
-      long_description="""\
-""",
+      long_description=open("README.txt").read(),
       classifiers=[
         "Framework :: Plone",
         "Framework :: Zope2",
