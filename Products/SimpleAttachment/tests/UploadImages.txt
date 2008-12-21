@@ -70,6 +70,11 @@ TODO: This feature appears to be broken download box seems always to be shown. I
 .. True
 
     >>> browser.getControl('Display images download box').selected = True
+
+This hidden value is set by the javascript event triggered by clicking on the previous box.
+Lets set it manually here
+
+    >>> browser.getControl(name='displayImages').value = '1'
     >>> browser.getControl('Save').click()
 
 
@@ -130,3 +135,26 @@ And check that the image is available for download
     >>> browser.getLink('Image 3').click()
     >>> browser.url
     'http://nohost/plone/Members/test_user_1_/rich-document/myPhoto.1.gif'
+
+Lets add a fourth image with an identical file name as the first and second image
+This should crash the plone site / the test
+
+    >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
+    >>> browser.getLink('Edit').click()
+    >>> browser.getControl(name='imageTitle').value = 'Image 4'
+    >>> control = browser.getControl(name='imageFile')
+    >>> fileControl = control.mech_control
+    >>> fileControl.add_file(myPhoto, filename='myPhoto.gif')
+    >>> browser.getControl(name='form.button.UploadImage').click()
+
+Lets check if the image was uploaded at all
+
+    >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
+    >>> 'Image 4' in browser.contents
+    True
+    
+And check that the image is available for download
+    
+    >>> browser.getLink('Image 4').click()
+    >>> browser.url
+    'http://nohost/plone/Members/test_user_1_/rich-document/myPhoto.2.gif'

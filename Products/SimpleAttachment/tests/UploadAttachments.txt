@@ -132,3 +132,14 @@ This should crash the plone site / the test
     >>> upload.add_file(StringIO(file_contents),
     ...                 'text/rtf', 'test_file.rtf')
     >>> browser.getControl(name='form.button.UploadAttachment').click()
+
+Lets add a fourth attachment with an identical file name as the first and second attachment
+This should crash the plone site / the test
+
+    >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
+    >>> browser.getLink('Edit').click()
+    >>> browser.getControl(name='attachmentTitle').value = 'Attachment 4'
+    >>> upload = browser.getControl(name='attachmentFile')
+    >>> upload.add_file(StringIO(file_contents),
+    ...                 'text/rtf', 'test_file.rtf')
+    >>> browser.getControl(name='form.button.UploadAttachment').click()

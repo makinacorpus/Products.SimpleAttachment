@@ -31,7 +31,7 @@ def findUniqueId(id):
 
     idx = 0
     while(name + '.' + str(idx) + '.' + ext) in contextIds:
-        idx=+1
+        idx += 1
 
     return(name + '.' + str(idx) + '.' + ext)
 
