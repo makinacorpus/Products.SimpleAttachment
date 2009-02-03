@@ -1,0 +1,17 @@
+Changelog
+=========
+
+3.0.3 (svn/unreleased)
+
+- Adding missing history file and resurrecting the past contributions.
+  [andrewb]
+
+- Reconfigure test setup.  Ensure that our zcml configuration deferred until 
+  the setup of the Plone site testing layer.  Helps for use with roadrunner
+  [andrewb]
+
+3.0.2 (2007-11-28)
+
+- Attachment support for Plone 3. SimpleAttachment is now distributed as a 
+  python egg.
+  [wichert]
