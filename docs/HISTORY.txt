@@ -1,7 +1,11 @@
 Changelog
 =========
 
-3.0.3 (svn/unreleased)
+3.0.3 (unreleased)
+------------------
+
+- Fixed i18n domain for label_click_to_get_file fileattachment_view.pt.
+  [vincentfretin]
 
 - Adding missing history file and resurrecting the past contributions.
   [andrewb]
@@ -11,6 +15,7 @@ Changelog
   [andrewb]
 
 3.0.2 (2007-11-28)
+------------------
 
 - Attachment support for Plone 3. SimpleAttachment is now distributed as a 
   python egg.
