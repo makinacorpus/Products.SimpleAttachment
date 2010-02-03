@@ -1,4 +1,5 @@
 from copy import deepcopy
+from zlib import compress, decompress
 from zope.annotation.interfaces import IAnnotations
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.permissions import View
@@ -50,11 +51,11 @@ class FileAttachment(ATFile):
             return self.getFile()
         annotations = IAnnotations(self)
         if key in annotations:
-            value = annotations[key]
+            value = decompress(annotations[key])
         else:
             value = self.getField('file').getIndexable(self)
             if value:
-                annotations[key] = value
+                annotations[key] = compress(value)
         return value
 
     def setFile(self, value):
