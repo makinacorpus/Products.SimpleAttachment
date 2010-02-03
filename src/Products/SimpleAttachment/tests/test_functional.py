@@ -19,6 +19,7 @@ from Products.CMFPlone.tests import PloneTestCase
 
 # RichDocument is required to be installed since the SimpleAttachment is tested
 # in combination with a Rich document which is added in the functional doc test, UploadAttachment.txt
+ZopeTestCase.installProduct('SimpleAttachment')
 ZopeTestCase.installProduct('RichDocument')
 PRODUCTS = ['SimpleAttachment','RichDocument']
 PloneTestCase.setupPloneSite(products=PRODUCTS)

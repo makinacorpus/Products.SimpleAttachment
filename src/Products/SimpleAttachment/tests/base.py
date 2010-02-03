@@ -2,7 +2,6 @@
 # SimpleAttachment tests
 
 # Import the base test case classes
-from Testing import ZopeTestCase
 from Products.PloneTestCase import PloneTestCase
 
 from Products.Five import zcml
@@ -40,7 +39,6 @@ def setup_product():
     # We may also need to load dependencies, e.g.:
     #   ztc.installPackage('borg.localrole')
 
-    ZopeTestCase.installPackage('Products.SimpleAttachment')
 
 # The order here is important: We first call the (deferred) function
 # which installs the products we need for this product. Then, we let
