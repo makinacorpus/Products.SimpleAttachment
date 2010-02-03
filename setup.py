@@ -27,6 +27,7 @@ setup(name='Products.SimpleAttachment',
       ],
       extras_require = { 'test': [
           'zope.testing',
+          'collective.testcaselayer',
           'Products.RichDocument',
       ]},
       entry_points="""

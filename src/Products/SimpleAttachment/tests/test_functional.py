@@ -11,21 +11,12 @@ import glob
 import doctest
 import unittest
 from Globals import package_home
-from Testing import ZopeTestCase
 from Testing.ZopeTestCase import FunctionalDocFileSuite as Suite
 
 from Products.SimpleAttachment.tests import GLOBALS
-from Products.CMFPlone.tests import PloneTestCase
-
-# RichDocument is required to be installed since the SimpleAttachment is tested
-# in combination with a Rich document which is added in the functional doc test, UploadAttachment.txt
-ZopeTestCase.installProduct('SimpleAttachment')
-ZopeTestCase.installProduct('RichDocument')
-PRODUCTS = ['SimpleAttachment','RichDocument']
-PloneTestCase.setupPloneSite(products=PRODUCTS)
+from Products.SimpleAttachment.tests.base import FunctionalTestCase
 
 OPTIONFLAGS = (
-    #doctest.REPORT_ONLY_FIRST_FAILURE |
     doctest.ELLIPSIS |
     doctest.NORMALIZE_WHITESPACE
 )
@@ -37,11 +28,9 @@ def list_doctests():
 
 def test_suite():
     filenames = list_doctests()
-
     suites = [Suite(os.path.basename(filename),
                optionflags=OPTIONFLAGS,
                package='Products.SimpleAttachment.tests',
-               test_class=PloneTestCase.FunctionalTestCase)
+               test_class=FunctionalTestCase)
               for filename in filenames]
-
     return unittest.TestSuite(suites)

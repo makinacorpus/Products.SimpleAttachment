@@ -4,26 +4,9 @@ Based on the test tutorial: http://plone.org/documentation/tutorial/testing/doct
 and the AddMoveAndDeleteDocument.txt doc test from CMFPlone
 ==============================================================================
 
-Create the browser object we'll be using.
-
-Read more about the browser object in top of UploadAttachment.txt
-
-    >>> from Products.Five.testbrowser import Browser
-    >>> browser = Browser()
-    >>> browser.open('http://nohost/plone')
-    >>> 'Welcome to Plone' in browser.contents
-    True
-    
-Log into Plone
-    
-    >>> browser.getControl('Login Name').value = 'test_user_1_'
-    >>> browser.getControl('Password').value = 'secret'
-    >>> browser.getControl('Log in').click()
-    >>> 'You are now logged in' in browser.contents
-    True
-    
 Go the member folder and add a Rich document    
 
+    >>> browser = self.getBrowser()
     >>> browser.open('http://nohost/plone/Members/test_user_1_')
     >>> browser.getLink('Add new').click()
     >>> 'Add new item' in browser.contents

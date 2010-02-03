@@ -1,6 +1,7 @@
-from Products.SimpleAttachment.tests import base
+from Products.SimpleAttachment.tests.base import IntegrationTestCase
 
-class TestInstallation(base.SimpleAttachmentTestCase):
+
+class TestInstallation(IntegrationTestCase):
     """Ensure product is properly installed"""
 
     def afterSetUp(self):
@@ -43,9 +44,7 @@ class TestInstallation(base.SimpleAttachmentTestCase):
         self.failUnless('ImageAttachment' in linkable)
         self.failUnless('ImageAttachment' in mediaobject)
 
-def test_suite():
-    from unittest import TestSuite, makeSuite
-    suite = TestSuite()
-    suite.addTest(makeSuite(TestInstallation))
-    return suite
 
+def test_suite():
+    from unittest import defaultTestLoader
+    return defaultTestLoader.loadTestsFromName(__name__)
