@@ -24,7 +24,7 @@ Log into Plone
     
 Go the member folder and add a Rich document    
 
-    >>> browser.getLink('My Folder').click()
+    >>> browser.open('http://nohost/plone/Members/test_user_1_')
     >>> browser.getLink('Add new').click()
     >>> 'Add new item' in browser.contents
     True
