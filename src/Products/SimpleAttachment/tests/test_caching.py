@@ -38,6 +38,18 @@ class CachingTests(IntegrationTestCase):
         attachment.setFile(getData('plone4.pdf'))
         self.failUnless('Plone 4' in attachment.SearchableText())
 
+    def testFieldSetInvalidatesCache(self):
+        attachment = self.makeOne('plone3.pdf')
+        self.failUnless('Plone 3' in attachment.SearchableText())
+        attachment.getField('file').set(attachment, getData('plone4.pdf'))
+        self.failUnless('Plone 4' in attachment.SearchableText())
+
+    def testUpdateInvalidatesCache(self):
+        attachment = self.makeOne('plone3.pdf')
+        self.failUnless('Plone 3' in attachment.SearchableText())
+        attachment.update(file=getData('plone4.pdf'))
+        self.failUnless('Plone 4' in attachment.SearchableText())
+
 
 def test_suite():
     from unittest import defaultTestLoader
