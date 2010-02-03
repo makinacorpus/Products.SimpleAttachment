@@ -52,8 +52,9 @@ class FileAttachment(ATFile):
         if key in annotations:
             value = annotations[key]
         else:
-            text = self.getField('file').getIndexable(self)
-            value = annotations[key] = text
+            value = self.getField('file').getIndexable(self)
+            if value:
+                annotations[key] = value
         return value
 
     def setFile(self, value):
