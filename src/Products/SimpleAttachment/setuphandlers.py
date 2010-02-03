@@ -1,11 +1,12 @@
 from Products.CMFCore.utils import getToolByName
 
+
 def setupAttachments(context):
     if context.readDataFile('simpleattachment_various.txt') is None:
         return
-    
+
     portal = context.getSite()
-    
+
     # Add FileAttachment and ImageAttachment to kupu's linkable and media types
     kupuTool = getToolByName(portal, 'kupu_library_tool')
     linkable = list(kupuTool.getPortalTypesForResourceType('linkable'))
@@ -24,7 +25,8 @@ def setupAttachments(context):
                                   {'resource_type' : 'mediaobject',
                                    'old_type'      : 'mediaobject',
                                    'portal_types'  :  mediaobject},))
-                                   
+
+
 def registerImagesFormControllerActions(context, contentType=None, template='base_edit'):
     """Register the form controller actions necessary for the widget to work.
     This should probably be called from the Install.py script. The parameter
@@ -61,7 +63,8 @@ def registerImagesFormControllerActions(context, contentType=None, template='bas
                       'DeleteImages',
                       'traverse_to',
                       'string:widget_imagesmanager_delete')
-                      
+
+
 def registerAttachmentsFormControllerActions(context, contentType=None, template='base_edit'):
     """Register the form controller actions necessary for the widget to work.
     This should probably be called from the Install.py script. The parameter
@@ -97,4 +100,4 @@ def registerAttachmentsFormControllerActions(context, contentType=None, template
                       contentType,
                       'DeleteAttachments',
                       'traverse_to',
-                      'string:widget_attachmentsmanager_delete')                                  
+                      'string:widget_attachmentsmanager_delete')

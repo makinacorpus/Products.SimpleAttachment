@@ -8,7 +8,7 @@ DirectoryView.registerDirectory('skins', globals())
 
 
 def initialize(context):
-    
+
     # Import the type, which results in registerType() being called
     from content import FileAttachment, ImageAttachment
     FileAttachment, ImageAttachment     # make pyflakes happy :)

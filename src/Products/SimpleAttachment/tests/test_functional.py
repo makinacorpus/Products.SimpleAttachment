@@ -3,7 +3,7 @@
     files in the tests directory and runs them.
 
     Based partly on test_functional.py from CMFPlone and the test tutorial:
-    http://plone.org/documentation/tutorial/testing/doctests 
+    http://plone.org/documentation/tutorial/testing/doctests
 
 """
 import os
@@ -21,10 +21,12 @@ OPTIONFLAGS = (
     doctest.NORMALIZE_WHITESPACE
 )
 
+
 def list_doctests():
     home = package_home(GLOBALS)
     return [filename for filename in
           glob.glob(os.path.sep.join([home, '*.txt']))]
+
 
 def test_suite():
     filenames = list_doctests()

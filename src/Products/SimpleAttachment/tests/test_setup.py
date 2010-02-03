@@ -18,7 +18,7 @@ class TestInstallation(IntegrationTestCase):
     def testSkinLayersInstalled(self):
         self.failUnless('attachment_widgets' in self.skins.objectIds())
         self.failUnless('simpleattachment' in self.skins.objectIds())
-        
+
     def testTypesInstalled(self):
         for t in self.metaTypes:
             self.failUnless(t in self.types.objectIds())
@@ -36,7 +36,7 @@ class TestInstallation(IntegrationTestCase):
     def testAttachmentsHaveNoWorkflow(self):
         self.assertEqual(self.workflow.getChainForPortalType('FileAttachment'), ())
         self.assertEqual(self.workflow.getChainForPortalType('ImageAttachment'), ())
-    
+
     def testKupuResources(self):
         linkable = self.kupu.getPortalTypesForResourceType('linkable')
         mediaobject = self.kupu.getPortalTypesForResourceType('mediaobject')
