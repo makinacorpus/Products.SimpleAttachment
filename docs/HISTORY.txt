@@ -4,6 +4,9 @@ Changelog
 3.0.3 (unreleased)
 ------------------
 
+- Add caching of portal transformation to `text/plain` to speed up reindexing.
+  [witsch]
+
 - Fixed i18n domain for label_click_to_get_file fileattachment_view.pt.
   [vincentfretin]
 
