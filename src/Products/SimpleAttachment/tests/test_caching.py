@@ -1,12 +1,6 @@
-from os.path import dirname, join
 from Products.CMFPlone.utils import _createObjectByType as create
 from Products.SimpleAttachment.tests.base import IntegrationTestCase
-
-
-def getData(filename):
-    from Products.SimpleAttachment import tests
-    filename = join(dirname(tests.__file__), filename)
-    return open(filename, 'r').read()
+from Products.SimpleAttachment.tests.utils import getData
 
 
 class CachingTests(IntegrationTestCase):
