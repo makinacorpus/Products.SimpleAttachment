@@ -1,4 +1,5 @@
 from copy import deepcopy
+from logging import getLogger
 from zlib import compress, decompress
 from zope.annotation.interfaces import IAnnotations
 from AccessControl import ClassSecurityInfo
@@ -7,6 +8,7 @@ from Products.ATContentTypes.content.file import ATFile
 from Products.Archetypes.public import registerType, FileField
 
 
+debug = getLogger(__name__).debug
 key = 'transforms_cache'
 
 
@@ -51,8 +53,10 @@ class FileAttachment(ATFile):
             return self.getFile()
         annotations = IAnnotations(self)
         if key in annotations:
+            debug('using cached transforms value for %r', self)
             value = decompress(annotations[key])
         else:
+            debug('getting transforms value for %r', self)
             value = self.getField('file').getIndexable(self)
             if value:
                 annotations[key] = compress(value)
