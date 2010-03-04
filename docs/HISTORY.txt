@@ -4,6 +4,8 @@ Changelog
 3.2 (unreleased)
 ----------------
 
+- registerType needs PROJECTNAME as second parameter
+  [toutpt]
 
 3.1 (2010-02-09)
 ----------------

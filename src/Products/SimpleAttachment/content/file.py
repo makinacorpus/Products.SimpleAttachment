@@ -6,7 +6,7 @@ from AccessControl import ClassSecurityInfo
 from Products.CMFCore.permissions import View
 from Products.ATContentTypes.content.file import ATFile
 from Products.Archetypes.public import registerType, FileField
-
+from Products.SimpleAttachment.config import PROJECTNAME
 
 debug = getLogger(__name__).debug
 key = 'transforms_cache'
@@ -70,4 +70,4 @@ class FileAttachment(ATFile):
         return super(FileAttachment, self).setFile(value)
 
 
-registerType(FileAttachment)
+registerType(FileAttachment, PROJECTNAME)
