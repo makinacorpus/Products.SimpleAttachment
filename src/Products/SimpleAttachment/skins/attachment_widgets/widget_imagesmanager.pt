@@ -61,7 +61,9 @@
 
     <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
         <metal:fill fill-slot="widget_body_label_prefix"
-                    tal:define="value python:test(not not value and value not in ('0', 'False'), 1, 0)">
+                    tal:define="value python:test(not not value and value not in ('0', 'False'), 1, 0);
+ 																Iterator python:modules['Products.CMFPlone'].IndexIterator;
+															  tabindex python:Iterator(mainSlot=False)">
           <input class="noborder"
                  type="checkbox"
                  value="on"
@@ -82,7 +84,9 @@
 
     <tal:after_field define="visState python:widget.isVisible(here, mode);
                              visCondition python:field.widget.testCondition(here, portal, template);
-                             images python:here.getFolderContents(contentFilter={'portal_type': ['ImageAttachment']}, full_objects=True)"
+                             images python:here.getFolderContents(contentFilter={'portal_type': ['ImageAttachment']}, full_objects=True);
+														 Iterator python:modules['Products.CMFPlone'].IndexIterator;
+														 tabindex python:Iterator(mainSlot=False)"
                      condition="python:visState == 'visible' and visCondition">
 
         <dl id="image-controls"
