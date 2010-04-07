@@ -20,6 +20,8 @@
             <tal:related tal:repeat="item attachments">
                 <li tal:define="desc item/Description;
                                 item_type item/portal_type;
+																portal context/@@plone_portal_state/portal;
+																putils portal/plone_utils;
                                 item_type_class python:'contenttype-' + putils.normalizeString(item_type);
                                 item_wf_state item/review_state | python:getInfoFor(item, 'review_state', '');
                                 item_wf_state_class python:'state-' + putils.normalizeString(item_wf_state);

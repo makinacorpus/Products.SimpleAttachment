@@ -10,6 +10,9 @@ Changelog
 - tabindex needs to be imported for Plone 4
   [vangheem]
 
+- fixed reference to get tool for Plone 4
+  [vangheem]
+
 
 3.1 (2010-02-09)
 ----------------
