@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.2 (unreleased)
+3.2 (2010-04-21)
 ----------------
 
 - registerType needs PROJECTNAME as second parameter

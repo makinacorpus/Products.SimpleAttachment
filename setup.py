@@ -1,11 +1,12 @@
 from setuptools import setup, find_packages
+import os
 
 version = '3.2'
 
 setup(name='Products.SimpleAttachment',
       version=version,
       description="Simple Attachments for Plone",
-      long_description=open("README.txt").read(),
+      long_description=open("README.txt").read() + '\n' + open('docs/HISTORY.txt'),
       classifiers=[
         "Framework :: Plone",
         "Framework :: Zope2",
