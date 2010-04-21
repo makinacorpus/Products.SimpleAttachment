@@ -1,6 +1,5 @@
 from Products.CMFCore.utils import getToolByName
 
-
 def setupAttachments(context):
     if context.readDataFile('simpleattachment_various.txt') is None:
         return
@@ -8,23 +7,36 @@ def setupAttachments(context):
     portal = context.getSite()
 
     # Add FileAttachment and ImageAttachment to kupu's linkable and media types
-    kupuTool = getToolByName(portal, 'kupu_library_tool')
-    linkable = list(kupuTool.getPortalTypesForResourceType('linkable'))
-    mediaobject = list(kupuTool.getPortalTypesForResourceType('mediaobject'))
-    if 'FileAttachment' not in linkable:
-        linkable.append('FileAttachment')
-    if 'ImageAttachment' not in linkable:
+    kupuTool = getToolByName(portal, 'kupu_library_tool', None)
+    tinyTool = getToolByName(portal, 'portal_tinymce', None)
+    if kupuTool:
+        linkable = list(kupuTool.getPortalTypesForResourceType('linkable'))
+        mediaobject = list(kupuTool.getPortalTypesForResourceType('mediaobject'))
+        if 'FileAttachment' not in linkable:
+            linkable.append('FileAttachment')
+        if 'ImageAttachment' not in linkable:
+            linkable.append('ImageAttachment')
+        if 'ImageAttachment' not in mediaobject:
+            mediaobject.append('ImageAttachment')
+        # kupu_library_tool has an idiotic interface, basically written purely to
+        # work with its configuration page. :-(
+        kupuTool.updateResourceTypes(({'resource_type' : 'linkable',
+                                       'old_type'      : 'linkable',
+                                       'portal_types'  :  linkable},
+                                      {'resource_type' : 'mediaobject',
+                                       'old_type'      : 'mediaobject',
+                                       'portal_types'  :  mediaobject},))
+                                
+    if tinyTool:
+        linkable = tinyTool.linkable.split('\n')
         linkable.append('ImageAttachment')
-    if 'ImageAttachment' not in mediaobject:
-        mediaobject.append('ImageAttachment')
-    # kupu_library_tool has an idiotic interface, basically written purely to
-    # work with its configuration page. :-(
-    kupuTool.updateResourceTypes(({'resource_type' : 'linkable',
-                                   'old_type'      : 'linkable',
-                                   'portal_types'  :  linkable},
-                                  {'resource_type' : 'mediaobject',
-                                   'old_type'      : 'mediaobject',
-                                   'portal_types'  :  mediaobject},))
+        linkable.append('FileAttachment')
+        tinyTool.linkable = '\n'.join(set(linkable))
+        
+        imageobjects = tinyTool.imageobjects.split('\n')
+        imageobjects.append('ImageAttachment')
+        tinyTool.imageobjects = '\n'.join(set(imageobjects))
+        
 
 
 def registerImagesFormControllerActions(context, contentType=None, template='base_edit'):

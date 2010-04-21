@@ -1,6 +1,14 @@
 Changelog
 =========
 
+3.3 (2010-04-21)
+----------------
+
+- have import step handle kupu and tiny mce and not rely
+  on kupu being there since it's not the default in Plone 4
+  [vangheem]
+
+
 3.2 (2010-04-21)
 ----------------
 
