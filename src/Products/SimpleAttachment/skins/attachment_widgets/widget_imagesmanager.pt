@@ -11,7 +11,9 @@
             tal:define="voc field/Vocabulary;
                         accessor python:field.getAccessor(here);
                         value python:voc and voc.getValue(str(accessor())) or accessor();
-                        images python:here.getFolderContents(contentFilter={'portal_type': ['ImageAttachment']})">
+												catalog context/@@plone_tools/catalog;
+												path python: '/'.join(context.getPhysicalPath());
+                        images python:catalog(portal_type = ['ImageAttachment'], path=path)">
 
     <tal:block condition="python:(test(not not accessor() and accessor() not in ('0', 'False'), 1, 0)) and images">
         <fieldset id="imagesBox">
@@ -86,7 +88,10 @@
 
     <tal:after_field define="visState python:widget.isVisible(here, mode);
                              visCondition python:field.widget.testCondition(here, portal, template);
-                             images python:here.getFolderContents(contentFilter={'portal_type': ['ImageAttachment']}, full_objects=True);
+														 catalog context/@@plone_tools/catalog;
+														 path python: '/'.join(context.getPhysicalPath());
+		                         images python:catalog(portal_type = ['ImageAttachment'], path=path);
+														 images python: [i.getObject() for i in images];
 														 Iterator python:modules['Products.CMFPlone'].IndexIterator;
 														 tabindex python:Iterator(mainSlot=False)"
                      condition="python:visState == 'visible' and visCondition">
