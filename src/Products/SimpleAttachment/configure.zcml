@@ -8,12 +8,11 @@
        install the product
     -->
     <gs:registerProfile
-       name="SimpleAttachment"
+       name="default"
        title="Attachment support"
        directory="profiles/default"
        description="Simple attachment content types and widget"
        provides="Products.GenericSetup.interfaces.EXTENSION"
-       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-       />
+    />
     
 </configure>

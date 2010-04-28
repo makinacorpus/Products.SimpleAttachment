@@ -9,6 +9,7 @@ def setupAttachments(context):
     # Add FileAttachment and ImageAttachment to kupu's linkable and media types
     kupuTool = getToolByName(portal, 'kupu_library_tool', None)
     tinyTool = getToolByName(portal, 'portal_tinymce', None)
+
     if kupuTool:
         linkable = list(kupuTool.getPortalTypesForResourceType('linkable'))
         mediaobject = list(kupuTool.getPortalTypesForResourceType('mediaobject'))

@@ -1,6 +1,17 @@
 Changelog
 =========
 
+3.4 (2010-04-28)
+----------------
+
+- fix attachments not being shown from migrated sites since
+  getFolderContents didn't work correctly.
+  [vangheem]
+
+- change profile name to default like normal products should
+  [vangheem]
+
+
 3.3 (2010-04-21)
 ----------------
 
