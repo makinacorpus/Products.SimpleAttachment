@@ -1,6 +1,13 @@
 Changelog
 =========
 
+3.5 (unreleased)
+----------------
+
+- readded old profile name for backward compatibility.
+  Both profiles exist now. Please use default.
+  [do3cc]
+
 3.4 (2010-04-28)
 ----------------
 
