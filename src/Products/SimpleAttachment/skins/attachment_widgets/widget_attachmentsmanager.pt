@@ -63,15 +63,12 @@
 
     <metal:use use-macro="field_macro | here/widgets/field/macros/edit">
         <metal:fill fill-slot="widget_body_label_prefix"
-                    tal:define="value python:test(not not value and value not in ('0', 'False'), 1, 0);
-															  Iterator python:modules['Products.CMFPlone'].IndexIterator;
-															  tabindex python:Iterator(mainSlot=False);">
+                    tal:define="value python:test(not not value and value not in ('0', 'False'), 1, 0);">
           <input class="noborder"
                  type="checkbox"
                  value="on"
                  tabindex=""
-                 tal:attributes="tabindex tabindex/next;
-                                 name string:${fieldName}_visible;
+                 tal:attributes="name string:${fieldName}_visible;
                                  onClick string:toggle_boolean('${fieldName}', '${fieldName}_hidden');; return true;
                                  id fieldName;
                                  checked python:value;"
@@ -88,9 +85,7 @@
                              visCondition python:field.widget.testCondition(here, portal, template);
 														 catalog context/@@plone_tools/catalog;
 														 path python: '/'.join(context.getPhysicalPath());
-		                         attachments python:catalog(portal_type = ['FileAttachment'], path=path);
-														 Iterator python:modules['Products.CMFPlone'].IndexIterator;
-														 tabindex python:Iterator(mainSlot=False)"
+		                         attachments python:catalog(portal_type = ['FileAttachment'], path=path);"
                      condition="python:visState == 'visible' and visCondition">
 
         <dl id="attachment-controls"
@@ -133,8 +128,7 @@
                                        tabindex=""
                                        id="#"
                                        value="#"
-                                       tal:attributes="tabindex tabindex/next;
-                                                       value attachment/Title;"
+                                       tal:attributes="value attachment/Title;"
                                        />
                                 <div class="discreet">
                                     (<a href="" target="_blank" tal:attributes="href attachment/getURL"
@@ -151,21 +145,18 @@
                                name="form.button.RenameAttachments"
                                value="Change titles"
                                i18n:attributes="value"
-                               tal:attributes="tabindex tabindex/next;"
                                />
                         <input class="context"
                                type="submit"
                                name="form.button.MoveAttachments"
                                value="Move first"
                                i18n:attributes="value"
-                               tal:attributes="tabindex tabindex/next;"
                                />
                         <input class="destructive"
                                type="submit"
                                name="form.button.DeleteAttachments"
                                value="Delete selected"
                                i18n:attributes="value"
-                               tal:attributes="tabindex tabindex/next;"
                                />
                     </div>
 
@@ -188,7 +179,6 @@
                            name="attachmentTitle"
                            size="30"
                            tabindex=""
-                           tal:attributes="tabindex tabindex/next;"
                            value=""
                            />
                 </div>
@@ -204,8 +194,7 @@
                            name="attachmentFile"
                            size="30"
                            tabindex=""
-                           tal:attributes="tabindex tabindex/next;
-                                           value request/attachmentFile/filename | nothing"
+                           tal:attributes="value request/attachmentFile/filename | nothing"
                            />
                 </div>
 
@@ -216,7 +205,6 @@
                            name="form.button.UploadAttachment"
                            value="Upload"
                            i18n:attributes="value"
-                           tal:attributes="tabindex tabindex/next;"
                            />
                     <div class="formHelp" i18n:translate="help_widgetattachmentsmanager_upload">
                         Once an attachment is uploaded, you can refer to it
