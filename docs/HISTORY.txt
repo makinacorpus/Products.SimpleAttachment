@@ -1,6 +1,12 @@
 Changelog
 =========
 
+3.6 (Unreleased)
+----------------
+
+- Fixed the setuphandler step dependency.
+  [rossp]
+
 3.5 (2010-05-18)
 ----------------
 
