@@ -4,7 +4,7 @@
               handler="Products.SimpleAttachment.setuphandlers.setupAttachments"
               title="Attachments view configuration">
   <dependency step="properties"/>
-  <dependency step="types"/>
+  <dependency step="typeinfo"/>
     Set up display properties for FileAttachment and ImageAttachment types
  </import-step>
 </import-steps>
