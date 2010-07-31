@@ -1,11 +1,15 @@
 Changelog
 =========
 
-3.6 (Unreleased)
+3.6 (2010-07-29)
 ----------------
 
 - Fixed the setuphandler step dependency.
   [rossp]
+
+- removed tabindex for plone 4 compatibility because of 
+  http://dev.plone.org/plone/changeset/36610/Plone/trunk/Products/CMFPlone/utils.py
+  [hpeteragitator]
 
 3.5 (2010-05-18)
 ----------------
