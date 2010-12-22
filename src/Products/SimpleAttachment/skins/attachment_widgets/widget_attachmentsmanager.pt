@@ -13,7 +13,7 @@
                         value python:voc and voc.getValue(str(accessor())) or accessor();
 												catalog context/@@plone_tools/catalog;
 												path python: '/'.join(context.getPhysicalPath());
-                        attachments python:catalog(portal_type = ['FileAttachment'], path=path)">
+                        attachments python:catalog(portal_type = ['FileAttachment'], path=path, sort_on='getObjPositionInParent')">
 
     <tal:block condition="python:(test(not not accessor() and accessor() not in ('0', 'False'), 1, 0)) and attachments">
         <fieldset id="attachmentsBox">
@@ -85,7 +85,7 @@
                              visCondition python:field.widget.testCondition(here, portal, template);
 														 catalog context/@@plone_tools/catalog;
 														 path python: '/'.join(context.getPhysicalPath());
-		                         attachments python:catalog(portal_type = ['FileAttachment'], path=path);"
+		                         attachments python:catalog(portal_type = ['FileAttachment'], path=path, sort_on='getObjPositionInParent');"
                      condition="python:visState == 'visible' and visCondition">
 
         <dl id="attachment-controls"

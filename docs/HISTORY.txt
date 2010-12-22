@@ -1,6 +1,13 @@
 Changelog
 =========
 
+3.7 (unreleased)
+----------------
+
+- Fixed images and attachments in widgetmanagers were displayed in random 
+  order because default catalog query (implemented in 3.4) does not sort on
+  'getObjPositionInParent' by default.  [saily]
+
 3.6 (2010-07-29)
 ----------------
 

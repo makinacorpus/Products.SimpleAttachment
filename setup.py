@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '3.6'
+version = '3.7'
 
 setup(name='Products.SimpleAttachment',
       version=version,
@@ -26,7 +26,7 @@ setup(name='Products.SimpleAttachment',
       install_requires=[
           'setuptools',
       ],
-      extras_require = { 'test': [
+      extras_require={ 'test': [
           'zope.testing',
           'collective.testcaselayer',
           'Products.RichDocument',
