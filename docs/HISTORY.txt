@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.7 (unreleased)
+3.7 (2010-12-27)
 ----------------
 
 - Fixed images and attachments in widgetmanagers were displayed in random 
