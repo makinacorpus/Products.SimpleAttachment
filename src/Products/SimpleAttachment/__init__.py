@@ -3,6 +3,9 @@ from Products.CMFCore import utils, DirectoryView
 from Products.SimpleAttachment.config import PROJECTNAME
 from Products.SimpleAttachment.config import DEFAULT_ADD_CONTENT_PERMISSION
 
+from zope.i18nmessageid import MessageFactory
+
+SimpleAttachmentMessageFactory = MessageFactory(u'simpleattachment')
 
 DirectoryView.registerDirectory('skins', globals())
 

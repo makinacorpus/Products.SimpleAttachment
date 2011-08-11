@@ -1,17 +1,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="simpleattachment">
 
 <body>
 
 <div metal:fill-slot="main">
     <tal:main-macro metal:define-macro="main"
                     tal:define="size here/size">
-
-        <div metal:use-macro="here/document_actions/macros/document_actions">
-            Document actions (print, sendto etc)
-        </div>
 
         <h1 tal:content="here/pretty_title_or_id" class="documentFirstHeading">
             Title or id
@@ -21,7 +17,8 @@
            class="link-parent"
            tal:define="parent_url python:here.navigationParent(here, template_id)"
            tal:condition="parent_url"
-           tal:attributes="href parent_url">
+           tal:attributes="href parent_url"
+           i18n:translate="label_link_to_origin">
         Go to the document this image is attached to.
         </a>
     

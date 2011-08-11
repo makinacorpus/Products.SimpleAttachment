@@ -2,7 +2,11 @@
    xmlns="http://namespaces.zope.org/zope"
    xmlns:gs="http://namespaces.zope.org/genericsetup"
    xmlns:five="http://namespaces.zope.org/five"
-   i18n_domain="SimpleAttachment">
+   xmlns:i18n="http://namespaces.zope.org/i18n"
+   i18n_domain="simpleattachment">
+
+  <five:registerPackage package="." initialize=".initialize" />
+  <i18n:registerTranslations directory="locales" />
   
   <!-- Register the GenericSetup extension profile so that we can
        install the product

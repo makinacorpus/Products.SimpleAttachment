@@ -1,6 +1,11 @@
 Changelog
 =========
 
+3.8 (unreleased)
+----------------
+
+- Added Dutch translations [jladage]
+
 3.7 (2010-12-27)
 ----------------
 
