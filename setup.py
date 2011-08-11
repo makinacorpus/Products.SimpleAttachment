@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '3.8'
+version = '3.9dev'
 
 setup(name='Products.SimpleAttachment',
       version=version,
