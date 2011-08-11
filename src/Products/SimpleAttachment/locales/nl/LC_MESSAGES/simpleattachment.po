@@ -24,7 +24,7 @@ msgstr "Een bijlage (afbeelding)"
 
 #: ./profiles/default/types/FileAttachment.xml
 msgid "Attached file"
-msgstr "Bijlage)"
+msgstr "Bijlage"
 
 #: ./profiles/default/types/ImageAttachment.xml
 msgid "Attached image"
