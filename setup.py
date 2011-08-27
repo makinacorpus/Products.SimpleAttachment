@@ -1,17 +1,16 @@
 from setuptools import setup, find_packages
-import os
 
-version = '3.9dev'
+version = '4.0dev'
 
 setup(name='Products.SimpleAttachment',
       version=version,
       description="Simple Attachments for Plone",
-      long_description=open("README.txt").read() + '\n' + open('docs/HISTORY.txt').read(),
+      long_description=open("README.txt").read() + '\n' +
+            open('CHANGES.txt').read(),
       classifiers=[
         "Framework :: Plone",
         "Framework :: Zope2",
         "Programming Language :: Python",
-        "Topic :: Software Development :: Libraries :: Python Modules",
         ],
       keywords='Plone attachments RichDocument',
       author='Martin Aspeli',
@@ -31,7 +30,4 @@ setup(name='Products.SimpleAttachment',
           'collective.testcaselayer',
           'Products.RichDocument',
       ]},
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
       )
