@@ -7,26 +7,12 @@
 
   <five:registerPackage package="." initialize=".initialize" />
   <i18n:registerTranslations directory="locales" />
-  
-  <!-- Register the GenericSetup extension profile so that we can
-       install the product
-    -->
-    <gs:registerProfile
-       name="default"
-       title="Attachment support"
-       directory="profiles/default"
-       description="Simple attachment content types and widget"
-       provides="Products.GenericSetup.interfaces.EXTENSION"
-    />
 
-    <!-- This profile is only here for not breaking other sites
-         It can be removed as soon as this package is Plone 4 only
-         People should not use it any longer -->
-    <gs:registerProfile
-       name="SimpleAttachment"
-       title="Attachment support (backward compatible version, please use default profile)"
-       directory="profiles/default"
-       description="Simple attachment content types and widget"
-       provides="Products.GenericSetup.interfaces.EXTENSION"
-    />
+  <gs:registerProfile
+     name="default"
+     title="Attachment support"
+     directory="profiles/default"
+     description="Simple attachment content types and widget"
+     provides="Products.GenericSetup.interfaces.EXTENSION" />
+
 </configure>

@@ -4,6 +4,9 @@ Changelog
 4.0dev (unreleased)
 -------------------
 
+- Removed the `SimpleAttachment` spelling of the GenericSetup profile. Use
+  `profile-Products.SimpleAttachment:default` instead.
+  [hannosch]
 
 3.8 (2011-08-11)
 ----------------
