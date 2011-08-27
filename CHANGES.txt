@@ -4,6 +4,10 @@ Changelog
 4.0dev (unreleased)
 -------------------
 
+- Removed transform cache from file attachment, but leave cache invalidation
+  in place. Reducing the size of the Data.fs is important.
+  [hannosch]
+
 - Removed the `SimpleAttachment` spelling of the GenericSetup profile. Use
   `profile-Products.SimpleAttachment:default` instead.
   [hannosch]

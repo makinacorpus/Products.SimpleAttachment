@@ -27,17 +27,17 @@ def setupAttachments(context):
                                       {'resource_type' : 'mediaobject',
                                        'old_type'      : 'mediaobject',
                                        'portal_types'  :  mediaobject},))
-                                
+
     if tinyTool:
         linkable = tinyTool.linkable.split('\n')
         linkable.append('ImageAttachment')
         linkable.append('FileAttachment')
         tinyTool.linkable = '\n'.join(set(linkable))
-        
+
         imageobjects = tinyTool.imageobjects.split('\n')
         imageobjects.append('ImageAttachment')
         tinyTool.imageobjects = '\n'.join(set(imageobjects))
-        
+
 
 
 def registerImagesFormControllerActions(context, contentType=None, template='base_edit'):

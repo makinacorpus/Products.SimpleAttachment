@@ -1,6 +1,5 @@
 from copy import deepcopy
 from logging import getLogger
-from zlib import compress, decompress
 from zope.annotation.interfaces import IAnnotations
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.permissions import View
@@ -13,7 +12,8 @@ key = 'transforms_cache'
 
 
 class CachingFileField(FileField):
-    """ extended version of AT's file-field support a transforms caching """
+    """Version of AT's file field, which used to add a transform cache.
+    """
 
     def set(self, instance, value, **kwargs):
         annotations = IAnnotations(instance)
@@ -48,19 +48,10 @@ class FileAttachment(ATFile):
 
     security.declareProtected(View, 'indexData')
     def indexData(self, mimetype=None):
-        """ index accessor with caching of the result """
+        """ index accessor """
         if not mimetype == 'text/plain':
             return self.getFile()
-        annotations = IAnnotations(self)
-        if key in annotations:
-            debug('using cached transforms value for %r', self)
-            value = decompress(annotations[key])
-        else:
-            debug('getting transforms value for %r', self)
-            value = self.getField('file').getIndexable(self)
-            if value:
-                annotations[key] = compress(value)
-        return value
+        return self.getField('file').getIndexable(self)
 
     def setFile(self, value):
         """ wrapper for "file" field mutator with cache invalidation """
