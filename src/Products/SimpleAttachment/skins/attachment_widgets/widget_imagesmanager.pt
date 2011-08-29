@@ -115,7 +115,7 @@
                             </td>
                             <td height="60" width="60" valign="middle" align="center" style="padding: 2px">
                                 <a href="#" class="caption" onClick=""
-                                    tal:attributes="onClick string: window.open('${image/absolute_url}', '${image/Title}', 'title=${image/Title},height=${image/height},width=${image/width},directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes,screenX=0,screenY=0');; return false;
+                                    tal:attributes="onClick string: window.open('${image/absolute_url}', '${image/Title}', 'title=${image/Title},height=${image/getHeight},width=${image/getWidth},directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes,screenX=0,screenY=0');; return false;
                                                     title image/Title;">
                                     <img tal:replace="structure python:image.tag(scale='tile')"/></a>
                             </td>
@@ -135,7 +135,7 @@
                                        />
                                 <div class="discreet">
                                     (<a href="#" class="caption" onClick=""
-                                        tal:attributes="onClick string: window.open('${image/absolute_url}', '${image/Title}', 'title=${image/Title},height=${image/height},width=${image/width},directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes,screenX=0,screenY=0');; return false;
+                                        tal:attributes="onClick string: window.open('${image/absolute_url}', '${image/Title}', 'title=${image/Title},height=${image/getHeight},width=${image/getWidth},directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes,screenX=0,screenY=0');; return false;
                                                         title image/Title;"
                                         tal:content="image/getId">Id</a> -
                                      <span tal:replace="image/getObjSize"/>)

@@ -24,6 +24,8 @@ setup(name='Products.SimpleAttachment',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'archetypes.schemaextender',
+          'plone.app.blob',
       ],
       extras_require={ 'test': [
           'zope.testing',

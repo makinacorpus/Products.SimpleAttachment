@@ -16,6 +16,9 @@ Changelog
   want to store annotations any longer.
   [ggozad]
 
+- Use blob fields for FileAttachment and ImageAttachment
+  [ggozad]
+
 3.8 (2011-08-11)
 ----------------
 
