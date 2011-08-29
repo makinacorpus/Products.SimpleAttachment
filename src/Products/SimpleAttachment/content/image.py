@@ -2,6 +2,7 @@ from zope.interface import implements
 
 from Products.ATContentTypes.content.image import ATImage
 from Products.Archetypes.public import registerType
+from Products.Archetypes.utils import shasattr
 
 from Products.SimpleAttachment.config import PROJECTNAME
 from Products.SimpleAttachment.interfaces import IImageAttachment
@@ -18,5 +19,15 @@ class ImageAttachment(ATImage):
         """ download the file inline or as an attachment """
         field = self.getPrimaryField()
         return field.index_html(self, REQUEST, RESPONSE)
+
+    def getFilename(self, key=None):
+        """Returns the filename from a field.
+        """
+        if key is None:
+            return self.getId()
+        else:
+            field = self.getField(key) or getattr(self, key, None)
+            if field and shasattr(field, 'getFilename'):
+                return field.getFilename(self)
 
 registerType(ImageAttachment, PROJECTNAME)
