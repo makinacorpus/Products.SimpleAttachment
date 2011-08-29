@@ -12,6 +12,10 @@ Changelog
   `profile-Products.SimpleAttachment:default` instead.
   [hannosch]
 
+- Removed the CachingFileField and relevant FileAttachments patches. We do not
+  want to store annotations any longer.
+  [ggozad]
+
 3.8 (2011-08-11)
 ----------------
 
