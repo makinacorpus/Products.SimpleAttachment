@@ -19,6 +19,10 @@ Changelog
 - Use blob fields for FileAttachment and ImageAttachment
   [ggozad]
 
+- added ImageAttachment and FileAttachment blob content migrators and
+  migration view (@@simple-attachment-migration)
+  [petschki]
+
 3.8 (2011-08-11)
 ----------------
 
@@ -27,7 +31,7 @@ Changelog
 3.7 (2010-12-27)
 ----------------
 
-- Fixed images and attachments in widgetmanagers were displayed in random 
+- Fixed images and attachments in widgetmanagers were displayed in random
   order because default catalog query (implemented in 3.4) does not sort on
   'getObjPositionInParent' by default.  [saily]
 
@@ -37,7 +41,7 @@ Changelog
 - Fixed the setuphandler step dependency.
   [rossp]
 
-- removed tabindex for plone 4 compatibility because of 
+- removed tabindex for plone 4 compatibility because of
   http://dev.plone.org/plone/changeset/36610/Plone/trunk/Products/CMFPlone/utils.py
   [hpeteragitator]
 
@@ -92,13 +96,13 @@ Changelog
 - Adding missing history file and resurrecting the past contributions.
   [andrewb]
 
-- Reconfigure test setup.  Ensure that our zcml configuration deferred until 
+- Reconfigure test setup.  Ensure that our zcml configuration deferred until
   the setup of the Plone site testing layer.  Helps for use with roadrunner
   [andrewb]
 
 3.0.2 (2007-11-28)
 ------------------
 
-- Attachment support for Plone 3. SimpleAttachment is now distributed as a 
+- Attachment support for Plone 3. SimpleAttachment is now distributed as a
   python egg.
   [wichert]

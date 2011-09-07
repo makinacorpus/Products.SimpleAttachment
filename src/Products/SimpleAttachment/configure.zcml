@@ -12,6 +12,8 @@
   <adapter factory=".extenders.FileBlobAttachment" />
   <adapter factory=".extenders.ImageBlobAttachment" />
 
+  <include package=".migration" />
+
   <gs:registerProfile
      name="default"
      title="Attachment support"
