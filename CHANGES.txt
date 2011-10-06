@@ -4,6 +4,9 @@ Changelog
 4.1 (unreleased)
 ----------------
 
+- include CMFCore permissions.zcml to make Plone 4.1 happy
+  [jensens, 2011-10-06]   
+
 
 4.0 (2011-10-06)
 ----------------
