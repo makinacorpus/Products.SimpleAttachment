@@ -3,14 +3,14 @@ Created on 07.09.2011
 
 @author: peterm
 '''
+from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
+from Products.contentmigration.migrator import BaseInlineMigrator
+from Products.contentmigration.walker import CustomQueryWalker
 from StringIO import StringIO
 from plone.app.blob.migrations import migrate
-from zope.component._api import getMultiAdapter
-from Products.contentmigration.migrator import BaseInlineMigrator
-from Products.CMFCore.utils import getToolByName
-from Products.contentmigration.walker import CustomQueryWalker
 from transaction import savepoint
+from zope.component._api import getMultiAdapter
 
 
 class FileAttachmentMigrator(BaseInlineMigrator):
@@ -64,15 +64,19 @@ def migrateSimpleAttachment(portal, migrator):
     return walker.getOutput()
 
 
+def migrate_to_blob_storage(portal_setup):
+    out = StringIO()
+    utool = getToolByName(portal_setup, 'portal_url')
+    portal = utool.getPortalObject()
+
+    print >> out, "migrate FileAttachments..."
+    print >> out, migrateSimpleAttachment(portal, FileAttachmentMigrator)
+    print >> out, "migrate ImageAttachments..."
+    print >> out, migrateSimpleAttachment(portal, ImageAttachmentMigrator)
+    return out.getvalue()
+
+
 class SimpleAttachmentMigrationView(BrowserView):
 
     def migrate(self):
-        out = StringIO()
-        portal = getMultiAdapter((self.context, self.request),
-                                  name="plone_portal_state").portal()
-
-        print >> out, "migrated FileAttachments"
-        print >> out, migrateSimpleAttachment(portal, FileAttachmentMigrator)
-        print >> out, "migrated ImageAttachments"
-        print >> out, migrateSimpleAttachment(portal, ImageAttachmentMigrator)
-        return out.getvalue()
+        migrate_to_blob_storage(self.context)

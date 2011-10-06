@@ -5,7 +5,10 @@ Changelog
 ----------------
 
 - include CMFCore permissions.zcml to make Plone 4.1 happy
-  [jensens, 2011-10-06]   
+  [jensens, 2011-10-06]
+
+- Add upgrade step to run blob_migration through generic setup.
+  [saily]
 
 
 4.0 (2011-10-06)
