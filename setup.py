@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '4.0dev'
+version = '4.0'
 
 setup(name='Products.SimpleAttachment',
       version=version,
@@ -15,7 +15,7 @@ setup(name='Products.SimpleAttachment',
       keywords='Plone attachments RichDocument',
       author='Martin Aspeli',
       author_email='',
-      url='',
+      url='http://pypi.python.org/pypi/Products.SimpleAttachment',
       license='GPL',
       packages=find_packages('src'),
       package_dir={'': 'src'},

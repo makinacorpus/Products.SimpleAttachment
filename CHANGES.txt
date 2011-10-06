@@ -1,8 +1,12 @@
 Changelog
 =========
 
-4.0dev (unreleased)
--------------------
+4.0 (2011-10-06)
+----------------
+
+- Added ImageAttachment and FileAttachment blob content migrators and
+  migration view (@@simple-attachment-migration)
+  [petschki]
 
 - Removed transform cache from file attachment, but leave cache invalidation
   in place. Reducing the size of the Data.fs is important.
@@ -18,10 +22,6 @@ Changelog
 
 - Use blob fields for FileAttachment and ImageAttachment
   [ggozad]
-
-- added ImageAttachment and FileAttachment blob content migrators and
-  migration view (@@simple-attachment-migration)
-  [petschki]
 
 3.8 (2011-08-11)
 ----------------
