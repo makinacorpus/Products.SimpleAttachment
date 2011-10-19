@@ -6,7 +6,7 @@ class TestInstallation(IntegrationTestCase):
 
     def afterSetUp(self):
         self.css        = self.portal.portal_css
-        self.kupu       = self.portal.kupu_library_tool
+        self.tiny       = self.portal.portal_tinymce
         self.skins      = self.portal.portal_skins
         self.types      = self.portal.portal_types
         self.factory    = self.portal.portal_factory
@@ -37,12 +37,12 @@ class TestInstallation(IntegrationTestCase):
         self.assertEqual(self.workflow.getChainForPortalType('FileAttachment'), ())
         self.assertEqual(self.workflow.getChainForPortalType('ImageAttachment'), ())
 
-    def testKupuResources(self):
-        linkable = self.kupu.getPortalTypesForResourceType('linkable')
-        mediaobject = self.kupu.getPortalTypesForResourceType('mediaobject')
+    def testTinyResources(self):
+        linkable = self.tiny.linkable.split('\n')
+        imageobjects = self.tiny.imageobjects.split('\n')
         self.failUnless('FileAttachment' in linkable)
         self.failUnless('ImageAttachment' in linkable)
-        self.failUnless('ImageAttachment' in mediaobject)
+        self.failUnless('ImageAttachment' in imageobjects)
 
 
 def test_suite():
