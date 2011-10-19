@@ -4,6 +4,10 @@ Changelog
 4.1 (unreleased)
 ----------------
 
+- Schema extend from p.a.blobs extension fields. Add an index_html to 
+  FileAttachment to fix partial downloads.
+  [ggozad, stefan]
+
 - include CMFCore permissions.zcml to make Plone 4.1 happy
   [jensens, 2011-10-06]
 

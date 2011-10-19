@@ -1,5 +1,8 @@
 from logging import getLogger
 
+from plone.app.blob.interfaces import IATBlobImage
+from zope.interface import implements
+
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_base
 from Products.ATContentTypes.content.file import ATFile
@@ -7,7 +10,6 @@ from Products.Archetypes.public import registerType
 from Products.Archetypes.utils import shasattr
 from Products.CMFCore.utils import getToolByName
 from ZODB.POSException import ConflictError
-from zope.interface import implements
 
 from Products.SimpleAttachment.config import PROJECTNAME
 from Products.SimpleAttachment.interfaces import IFileAttachment
@@ -44,6 +46,17 @@ class FileAttachment(ATFile):
         except:
             getLogger(__name__).exception('exception while trying to convert '
                'blob contents to "text/plain" for %r', self)
+
+    security.declareProtected('View', 'index_html')
+    def index_html(self, REQUEST, RESPONSE):
+       """ download the file inline or as an attachment """
+       field = self.getPrimaryField()
+       if IATBlobImage.providedBy(self):
+           return field.index_html(self, REQUEST, RESPONSE)
+       elif field.getContentType(self) in ATFile.inlineMimetypes:
+           return field.index_html(self, REQUEST, RESPONSE)
+       else:
+           return field.download(self, REQUEST, RESPONSE)
 
     def getFilename(self, key=None):
         """Returns the filename from a field.

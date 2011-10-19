@@ -1,9 +1,9 @@
 from zope.component import adapts
 from zope.interface import implements
 
-from archetypes.schemaextender.field import ExtensionField
 from archetypes.schemaextender.interfaces import ISchemaExtender
-from plone.app.blob.field import FileField, ImageField
+from plone.app.blob.subtypes.file import ExtensionBlobField as FileField
+from plone.app.blob.subtypes.image import ExtensionBlobField as ImageField
 
 from Products.Archetypes.atapi import AnnotationStorage
 from Products.Archetypes.atapi import FileWidget
@@ -16,12 +16,6 @@ from Products.SimpleAttachment.interfaces import IFileAttachment
 from Products.SimpleAttachment.interfaces import IImageAttachment
 
 
-class ImageExtensionField(ExtensionField, ImageField):
-    """ derivative of blobfield for extending schemas """
-
-
-class FileExtensionField(ExtensionField, FileField):
-    """ derivative of blobfield for extending schemas """
 
 
 class FileBlobAttachment(object):
@@ -29,7 +23,7 @@ class FileBlobAttachment(object):
     implements(ISchemaExtender)
 
     fields = [
-        FileExtensionField('file',
+        FileField('file',
             required=True,
             primary=True,
             searchable=True,
@@ -58,7 +52,7 @@ class ImageBlobAttachment(object):
     implements(ISchemaExtender)
 
     fields = [
-        ImageExtensionField('image',
+        ImageField('image',
             required=True,
             primary=True,
             accessor='getImage',
