@@ -21,7 +21,7 @@ Go the member folder and add a Rich document
 Edit simple stuff like title and description
 
     >>> browser.getControl('Title').value = 'Rich document'
-    >>> browser.getControl('Description').value = 'This is a rich document'
+    >>> browser.getControl('Summary').value = 'This is a rich document'
     >>> browser.getControl('Save').click()
     >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
     >>> 'Rich document' in browser.contents
