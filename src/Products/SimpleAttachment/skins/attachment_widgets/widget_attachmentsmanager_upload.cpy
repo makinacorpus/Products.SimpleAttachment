@@ -55,7 +55,7 @@ if attachmentFile:
         fileName = fileName.split('\\')[-1]
         fileName = fileName.split(':')[-1]
 
-        imageId = plone_utils.normalizeString(fileName)
+        imageId = context.restrictedTraverse('filename_normalizer')(fileName)
 
     if not imageId:
         imageId = plone_utils.normalizeString(attachmentTitle)

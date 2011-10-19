@@ -7,6 +7,7 @@ and the AddMoveAndDeleteDocument.txt doc test from CMFPlone
 Go the member folder and add a Rich document    
 
     >>> browser = self.getBrowser()
+    >>> browser.handleErrors = False
     >>> browser.open('http://nohost/plone/Members/test_user_1_')
     >>> browser.getLink('Add new').click()
     >>> 'Add new item' in browser.contents
