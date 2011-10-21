@@ -1,9 +1,12 @@
 Changelog
 =========
 
-4.2 (Unreleased)
+4.2 (2011-10-20)
 ----------------
 
+- Allow index_html to work for attachments that have not yet been migrated to
+  blobs
+  [stefan, ggozad]
 
 4.1 (2011-10-19)
 ----------------
