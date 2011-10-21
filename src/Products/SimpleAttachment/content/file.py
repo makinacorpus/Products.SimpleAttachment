@@ -5,6 +5,7 @@ from zope.interface import implements
 
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_base
+from OFS.Image import File
 from Products.ATContentTypes.content.file import ATFile
 from Products.Archetypes.public import registerType
 from Products.Archetypes.utils import shasattr
@@ -49,14 +50,16 @@ class FileAttachment(ATFile):
 
     security.declareProtected('View', 'index_html')
     def index_html(self, REQUEST, RESPONSE):
-       """ download the file inline or as an attachment """
-       field = self.getPrimaryField()
-       if IATBlobImage.providedBy(self):
-           return field.index_html(self, REQUEST, RESPONSE)
-       elif field.getContentType(self) in ATFile.inlineMimetypes:
-           return field.index_html(self, REQUEST, RESPONSE)
-       else:
-           return field.download(self, REQUEST, RESPONSE)
+        """ download the file inline or as an attachment """
+        field = self.getPrimaryField()
+        if isinstance(field.get(self), File):
+            return field.get(self).index_html(REQUEST, RESPONSE)
+        if IATBlobImage.providedBy(self):
+            return field.index_html(self, REQUEST, RESPONSE)
+        elif field.getContentType(self) in ATFile.inlineMimetypes:
+            return field.index_html(self, REQUEST, RESPONSE)
+        else:
+            return field.download(self, REQUEST, RESPONSE)
 
     def getFilename(self, key=None):
         """Returns the filename from a field.

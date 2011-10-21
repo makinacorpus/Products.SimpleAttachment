@@ -16,8 +16,6 @@ from Products.SimpleAttachment.interfaces import IFileAttachment
 from Products.SimpleAttachment.interfaces import IImageAttachment
 
 
-
-
 class FileBlobAttachment(object):
     adapts(IFileAttachment)
     implements(ISchemaExtender)

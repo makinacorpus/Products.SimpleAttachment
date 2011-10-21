@@ -1,5 +1,6 @@
 from zope.interface import implements
 
+from OFS.Image import File
 from Products.ATContentTypes.content.image import ATImage
 from Products.Archetypes.public import registerType
 from Products.Archetypes.utils import shasattr
@@ -18,6 +19,8 @@ class ImageAttachment(ATImage):
     def index_html(self, REQUEST, RESPONSE):
         """ download the file inline or as an attachment """
         field = self.getPrimaryField()
+        if isinstance(field.get(self), File):
+            return field.get(self).index_html(REQUEST, RESPONSE)
         return field.index_html(self, REQUEST, RESPONSE)
 
     def getFilename(self, key=None):
