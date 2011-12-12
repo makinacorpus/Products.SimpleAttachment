@@ -4,6 +4,9 @@ Changelog
 4.3 - Unreleased
 ----------------
 
+- fixed normalizer for files/images with umlauts in filename
+  [petschki]
+
 4.2 (2011-10-20)
 ----------------
 
@@ -14,11 +17,11 @@ Changelog
 4.1 (2011-10-19)
 ----------------
 
-- Added a view to provide filename normalizations since PloneTool's 
+- Added a view to provide filename normalizations since PloneTool's
   normalizeString does not do it any more.
   [ggozad, stefan]
 
-- Schema extend from p.a.blobs extension fields. Add an index_html to 
+- Schema extend from p.a.blobs extension fields. Add an index_html to
   FileAttachment to fix partial downloads.
   [ggozad, stefan]
 
