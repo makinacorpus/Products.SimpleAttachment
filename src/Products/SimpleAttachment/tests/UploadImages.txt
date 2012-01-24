@@ -1,10 +1,10 @@
 ==============================================================================
-Doctest for images upload 
-Based on the test tutorial: http://plone.org/documentation/tutorial/testing/doctests 
+Doctest for images upload
+Based on the test tutorial: http://plone.org/documentation/tutorial/testing/doctests
 and the AddMoveAndDeleteDocument.txt doc test from CMFPlone
 ==============================================================================
 
-Go the member folder and add a Rich document    
+Go the member folder and add a Rich document
 
     >>> browser = self.getBrowser()
     >>> browser.handleErrors = False
@@ -67,9 +67,9 @@ Lets check if the image was uploaded at all
     >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
     >>> 'Image 1' in browser.contents
     True
-    
+
 And check that the image is available for download
-        
+
     >>> browser.getLink('Image 1').click()
     >>> browser.url
     'http://nohost/plone/Members/test_user_1_/rich-document/myPhoto.gif'
@@ -92,7 +92,7 @@ Lets check if the image was uploaded at all
     True
 
 And check that the image is available for download
-    
+
     >>> browser.getLink('Image 2').click()
     >>> browser.url
     'http://nohost/plone/Members/test_user_1_/rich-document/myPhoto.0.gif'
@@ -113,9 +113,9 @@ Lets check if the image was uploaded at all
     >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
     >>> 'Image 3' in browser.contents
     True
-    
+
 And check that the image is available for download
-    
+
     >>> browser.getLink('Image 3').click()
     >>> browser.url
     'http://nohost/plone/Members/test_user_1_/rich-document/myPhoto.1.gif'
@@ -136,9 +136,26 @@ Lets check if the image was uploaded at all
     >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
     >>> 'Image 4' in browser.contents
     True
-    
+
 And check that the image is available for download
-    
+
     >>> browser.getLink('Image 4').click()
     >>> browser.url
     'http://nohost/plone/Members/test_user_1_/rich-document/myPhoto.2.gif'
+
+Add an image with special characters in filename in non english plone site
+
+    >>> self.portal.portal_properties.site_properties.default_language = 'de'
+    >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
+    >>> browser.getLink('Bearbeiten').click()
+    >>> browser.getControl(name='imageTitle').value = 'Foto not to fáil'
+    >>> control = browser.getControl(name='imageFile')
+    >>> fileControl = control.mech_control
+    >>> fileControl.add_file(myPhoto, filename='fáil_fötö.gif')
+    >>> browser.getControl(name='form.button.UploadImage').click()
+
+and check if it was uploaded
+
+     >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
+    >>> 'Foto not to fáil' in browser.contents
+    True

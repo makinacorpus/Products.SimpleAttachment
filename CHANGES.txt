@@ -1,10 +1,12 @@
 Changelog
 =========
 
-4.3 - Unreleased
+4.3 (2012-01-24)
 ----------------
 
-- fixed normalizer for files/images with umlauts in filename
+- fixed normalizer for file/image upload with umlauts in filename in non english
+  plone setup
+- added tests for this issue
   [petschki]
 
 4.2 (2011-10-20)

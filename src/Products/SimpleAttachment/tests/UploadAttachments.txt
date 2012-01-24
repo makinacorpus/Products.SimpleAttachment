@@ -1,10 +1,10 @@
 ==============================================================================
-Doctest for attachment upload 
-Based on the test tutorial: http://plone.org/documentation/tutorial/testing/doctests 
+Doctest for attachment upload
+Based on the test tutorial: http://plone.org/documentation/tutorial/testing/doctests
 and the AddMoveAndDeleteDocument.txt doc test from CMFPlone
 ==============================================================================
 
-Go the member folder and add a Rich document    
+Go the member folder and add a Rich document
 
     >>> browser = self.getBrowser()
     >>> browser.open('http://nohost/plone/Members/test_user_1_')
@@ -57,14 +57,14 @@ Lets check if the attachment was uploaded at all
     >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
     >>> 'Attachment 1' in browser.contents
     True
-    
-And check that the attachment is available for download    
-    
+
+And check that the attachment is available for download
+
     >>> browser.getLink('Attachment 1').click()
     >>> browser.url
     'http://nohost/plone/Members/test_user_1_/rich-document/test_file.rtf'
-    
- 
+
+
 Lets add a second attachment with an identical file name as the first attachment
 
     >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
@@ -81,8 +81,8 @@ Lets check if the attachment was uploaded at all
     >>> 'Attachment 2' in browser.contents
     True
 
-And check that the attachment is available for download    
-    
+And check that the attachment is available for download
+
     >>> browser.getLink('Attachment 2').click()
     >>> browser.url
     'http://nohost/plone/Members/test_user_1_/rich-document/test_file.0.rtf'
@@ -108,3 +108,20 @@ This should crash the plone site / the test
     >>> upload.add_file(StringIO(file_contents),
     ...                 'text/rtf', 'test_file.rtf')
     >>> browser.getControl(name='form.button.UploadAttachment').click()
+
+Add an attachment with special characters in filename in non english plone setup
+
+    >>> self.portal.portal_properties.site_properties.default_language = 'de'
+    >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
+    >>> browser.getLink('Bearbeiten').click()
+    >>> browser.getControl(name='attachmentTitle').value = 'Special Chäräcter Attachment'
+    >>> upload = browser.getControl(name='attachmentFile')
+    >>> upload.add_file(StringIO(file_contents),
+    ...                 'text/rtf', 'täst_fáil.rtf')
+    >>> browser.getControl(name='form.button.UploadAttachment').click()
+
+Lets check if the attachment was uploaded at all
+
+    >>> browser.open('http://nohost/plone/Members/test_user_1_/rich-document')
+    >>> 'Special Chäräcter Attachment' in browser.contents
+    True
