@@ -5,6 +5,7 @@ Changelog
 ----------------
 
 - fix import step dependencies [kiorky]
+- moved to github [petschki]
 
 4.3 (2012-01-24)
 ----------------
