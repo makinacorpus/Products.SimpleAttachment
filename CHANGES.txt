@@ -4,6 +4,7 @@ Changelog
 4.4 (unreleased)
 ----------------
 
+- fix import step dependencies, again [kiorky]
 - fix import step dependencies [kiorky]
 - moved to github [petschki]
 

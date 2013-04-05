@@ -29,4 +29,11 @@
      description="Simple attachment content types and widget"
      provides="Products.GenericSetup.interfaces.EXTENSION" />
 
+ <gs:importStep
+     name="simpleattachment"
+     handler="Products.SimpleAttachment.setuphandlers.setupAttachments"
+     description="Set up display properties for FileAttachment and ImageAttachment types"
+     title="Attachments view configuration">
+   <depends name="archetypes-various"/>
+ </gs:importStep>
 </configure>
